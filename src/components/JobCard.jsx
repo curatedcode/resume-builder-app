@@ -1,6 +1,7 @@
 import React from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+const parse = require('html-react-parser')
 
 
 class JobCard extends React.Component{
@@ -15,16 +16,7 @@ class JobCard extends React.Component{
       location: '',
       dateStart: '',
       dateEnd: '',
-      details: [],
-      quillData: '',
-      tempData: '',
-      quillOptions: {
-        toolbar:[
-          ['bold','italic'],
-          [{'list':'ordered'},{'list':'bullet'}]
-        ]
-      },
-      newQuillData: ''
+      quillData: ''
     }
   }
 
@@ -38,28 +30,32 @@ class JobCard extends React.Component{
     this.setState({location: localStorageData[objectKey].location})
     this.setState({dateStart: localStorageData[objectKey].dateStart})
     this.setState({dateEnd: localStorageData[objectKey].dateEnd})
-    this.setState({details: localStorageData[objectKey].details})
+    this.setState({quillData: localStorageData[objectKey].quillData})
   }
   updateData(){
     let localData = this.state.initialJobsData
-    const Delta = ReactQuill.import('delta')
-    let change = new Delta()
-    change = change.compose(this.state.newQuillData)
     const newData = {
       title: this.props.title,
       company: this.props.company,
       location: this.props.location,
       dateStart: this.props.dateStart,
       dateEnd: this.props.dateEnd,
-      details: this.props.details,
-      quillData: change
+      quillData: this.props.quillData,
     }
+    localData[this.props.objectKey] = newData
+    console.log(localData)
+    localStorage.setItem('cv-experience',{data:{localData}})
     if(JSON.stringify(this.state.initialData) !== JSON.stringify(newData)){
-      localData[this.props.objectKey] = newData
-      localStorage.setItem('cv-experience',{data:{localData}})
+
     }
   }
   render(){
+    const quillOptions = {
+      toolbar:[
+        ['bold','italic'],
+        [{'list':'ordered'},{'list':'bullet'}]
+      ]
+    }
     return(
       <>
         <div>
@@ -95,20 +91,15 @@ class JobCard extends React.Component{
           <div className={`${this.state.editable ? "":"hidden"}`}>
             <input value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
           </div>
-          <ul className={`list-disc ml-8 mt-2 ${this.state.editable ? "hidden":""}`}>
+          <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit`}>
             {
-              this.state.details.length > 0 && !this.state.editable ? (
-                this.state.details.map(detail => <li key={detail}>{detail}</li>)
-              ) : (
-                <li>Show off your accomplishments!</li>
-              )
+              parse(this.state.quillData)
             }
-          </ul>
-          <div className={`mt-2 ${this.state.editable ? "":""}`}>
-            <ReactQuill theme="snow" modules={this.state.quillOptions} onChange={(text: string, delta: any, source: string, editor: any) => {
-              if(source !== 'user') return
-              if(!this.state.editable) return
-              this.setState({newQuillData: editor.getContents()})
+          </div>
+          <div className={`${this.state.editable ? "":"hidden"}`}>
+            <ReactQuill theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
+              this.setState({quillData: value})
+              console.log(value)
             }} />
           </div>
         </div>
