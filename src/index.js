@@ -28,7 +28,7 @@ localStorage.setItem('cv-experience',JSON.stringify({
       location: "New York, New York",
       dateStart: "05/2002",
       dateEnd: "Present",
-      details: ["I loved working here so much", "Working on so really complex stuff you could not possibly comprehend", "Making coffees for everyone because I'm a little baby"]
+      quillData: '<ul><li>My first one</li><li>My Second One</li></ul>'
     },
     job2:{
       title: "Lost Marketing",
@@ -36,7 +36,7 @@ localStorage.setItem('cv-experience',JSON.stringify({
       location: "Buffalo, New York",
       dateStart: "01/2000",
       dateEnd: "05/2002",
-      details: ["I hated working here so much", "Working on so really simple stuff you could comprehend", "Making coffees for no one because I'm no intern"]
+      quillData: '<ul><li>My first one</li><li>My Second One</li></ul>'
     }
   }
 }))
