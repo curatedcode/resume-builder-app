@@ -23,7 +23,7 @@ class JobCard extends React.Component{
   }
 
   componentDidMount(){
-    let localStorageData = JSON.parse(localStorage.getItem('cv-experience')).data
+    let localStorageData = JSON.parse(localStorage.getItem('cv-experience'))
     const objectKey = this.props.objectKey
     this.setState({initialData: localStorageData[objectKey]})
     this.setState({initialJobsData: localStorageData})
@@ -59,7 +59,7 @@ class JobCard extends React.Component{
       quillData: this.state.quillData,
     }
     data[this.props.objectKey] = newData
-    localStorage.setItem('cv-experience',JSON.stringify({data}))
+    localStorage.setItem('cv-experience',JSON.stringify(data))
   }
   render(){
     const quillOptions = {

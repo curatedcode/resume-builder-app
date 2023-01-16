@@ -18,15 +18,16 @@ class DegreeCard extends React.Component{
     this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount(){
-    let localStorageData = JSON.parse(localStorage.getItem('cv-education')).data
-    this.setState({initialData: localStorageData[this.props.objectKey]})
+    let localStorageData = JSON.parse(localStorage.getItem('cv-education'))
+    const objectKey = this.props.objectKey
+    this.setState({initialData: localStorageData[objectKey]})
     this.setState({initialJobsData: localStorageData})
-    this.setState({school: localStorageData[this.props.objectKey].school})
-    this.setState({degree: localStorageData[this.props.objectKey].degree})
-    this.setState({study: localStorageData[this.props.objectKey].study})
-    this.setState({location: localStorageData[this.props.objectKey].location})
-    this.setState({dateStart: localStorageData[this.props.objectKey].dateStart})
-    this.setState({dateEnd: localStorageData[this.props.objectKey].dateEnd})
+    this.setState({school: localStorageData[objectKey].school})
+    this.setState({degree: localStorageData[objectKey].degree})
+    this.setState({study: localStorageData[objectKey].study})
+    this.setState({location: localStorageData[objectKey].location})
+    this.setState({dateStart: localStorageData[objectKey].dateStart})
+    this.setState({dateEnd: localStorageData[objectKey].dateEnd})
   }
   handleChange(event){
     const target = event.target
@@ -53,7 +54,7 @@ class DegreeCard extends React.Component{
       dateEnd: this.state.dateEnd
     }
     data[this.props.objectKey] = newData
-    localStorage.setItem('cv-education',JSON.stringify({data}))
+    localStorage.setItem('cv-education',JSON.stringify(data))
   }
   render(){
     return(
