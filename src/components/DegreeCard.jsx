@@ -74,7 +74,7 @@ class DegreeCard extends React.Component{
             }}>Cancel</button>
           </div>
         </div>
-        <div className="grid mb-4 gap-2">
+        <div className="grid mb-4">
           <span className={`text-lg font-bold ${this.state.editable ? "hidden":""}`}>{this.state.school}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
               <input name="school" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.school} onChange={this.handleChange}></input>
