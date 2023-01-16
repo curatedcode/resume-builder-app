@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "react-uuid";
 import DegreeCard from './DegreeCard'
 
 class EduSection extends React.Component{
@@ -14,7 +15,7 @@ class EduSection extends React.Component{
         <section className="mt-2 grid">
           <h2 className="place-self-center text-xl text-blue-400 mb-2">Education</h2>
           {
-            this.state.initialData.map(degree => <DegreeCard key={degree.degree} objectKey={this.state.initialData.findIndex((obj)=>obj.degree === degree.degree)}/>)
+            this.state.initialData.map(degree => <DegreeCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.degree === degree.degree)}/>)
           }
           <button onClick={()=>{
             const data = this.state.initialData
