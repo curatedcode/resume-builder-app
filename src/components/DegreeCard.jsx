@@ -43,7 +43,7 @@ class DegreeCard extends React.Component{
     this.setState({dateEnd: this.state.initialData.dateEnd})
   }
   updateData(){
-    let localData = this.state.initialJobsData
+    let data = this.state.initialJobsData
     const newData = {
       school: this.state.school,
       degree: this.state.degree,
@@ -52,12 +52,8 @@ class DegreeCard extends React.Component{
       dateStart: this.state.dateStart,
       dateEnd: this.state.dateEnd
     }
-    if(JSON.stringify(this.state.initialData) !== JSON.stringify(newData)){
-      localData[this.props.objectKey] = newData
-      localStorage.setItem('cv-education',{data:{
-        localData
-      }})
-    }
+    data[this.props.objectKey] = newData
+    localStorage.setItem('cv-education',JSON.stringify({data}))
   }
   render(){
     return(

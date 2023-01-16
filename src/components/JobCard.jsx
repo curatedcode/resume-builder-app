@@ -49,7 +49,7 @@ class JobCard extends React.Component{
     this.setState({quillData: this.state.initialData.quillData})
   }
   updateData(){
-    let localData = this.state.initialJobsData
+    let data = this.state.initialJobsData
     const newData = {
       title: this.state.title,
       company: this.state.company,
@@ -58,12 +58,8 @@ class JobCard extends React.Component{
       dateEnd: this.state.dateEnd,
       quillData: this.state.quillData,
     }
-    localData[this.props.objectKey] = newData
-    console.log(localData)
-    localStorage.setItem('cv-experience',{data:{localData}})
-    if(JSON.stringify(this.state.initialData) !== JSON.stringify(newData)){
-
-    }
+    data[this.props.objectKey] = newData
+    localStorage.setItem('cv-experience',JSON.stringify({data}))
   }
   render(){
     const quillOptions = {
