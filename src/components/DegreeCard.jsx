@@ -13,14 +13,9 @@ class DegreeCard extends React.Component{
       study: '',
       location: '',
       dateStart: '',
-      dateEnd: '',
-      newSchool: '',
-      newDegree: '',
-      newStudy: '',
-      newLocation: '',
-      newDateStart: '',
-      newDateEnd: ''
+      dateEnd: ''
     }
+    this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount(){
     let localStorageData = JSON.parse(localStorage.getItem('cv-education')).data
@@ -38,6 +33,14 @@ class DegreeCard extends React.Component{
     const name = target.name
     const value = target.value
     this.setState({[name]:value})
+  }
+  reset(){
+    this.setState({school: this.state.initialData.school})
+    this.setState({degree: this.state.initialData.degree})
+    this.setState({study: this.state.initialData.study})
+    this.setState({location: this.state.initialData.location})
+    this.setState({dateStart: this.state.initialData.dateStart})
+    this.setState({dateEnd: this.state.initialData.dateEnd})
   }
   updateData(){
     let localData = this.state.initialJobsData
@@ -69,6 +72,7 @@ class DegreeCard extends React.Component{
               this.setState({editable:false})
             }}>Save</button>
             <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+              this.reset()
               this.setState({editable:false})
             }}>Cancel</button>
           </div>
@@ -76,29 +80,29 @@ class DegreeCard extends React.Component{
         <div className="grid mb-4 gap-2">
           <span className={`text-lg font-bold ${this.state.editable ? "hidden":""}`}>{this.state.school}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newSchool" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.school} onChange={this.handleChange}></input>
+              <input name="school" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.school} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.degree}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newDegree" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.degree} onChange={this.handleChange}></input>
+              <input name="degree" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.degree} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.study}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newStudy" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.study} onChange={this.handleChange}></input>
+              <input name="study" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.study} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newLocation" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
+              <input name="location" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.location} onChange={this.handleChange}></input>
           </div>
           <div className="flex gap-2 opacity-50">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newDateStart" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateStart} onChange={this.handleChange}></input>
+              <input name="dateStart" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>to</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newDateEnd" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateEnd} onChange={this.handleChange}></input>
+              <input name="dateEnd" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
           </div>
         </div>
