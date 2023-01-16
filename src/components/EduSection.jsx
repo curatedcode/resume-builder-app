@@ -30,7 +30,7 @@ class EduSection extends React.Component{
             data.push(defaultData)
             localStorage.setItem('cv-education',JSON.stringify(data))
             this.setState({initialData: data})
-          }} className="">Add Education</button>
+          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors">+ Add Education</button>
         </section>
       </>
     )

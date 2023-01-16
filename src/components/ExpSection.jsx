@@ -30,7 +30,7 @@ class ExpSection extends React.Component{
             data.push(defaultData)
             localStorage.setItem('cv-experience',JSON.stringify(data))
             this.setState({initialData: data})
-          }} className="">Add A Job</button>
+          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors">+ Add Work Experience</button>
         </section>
       </>
     )
