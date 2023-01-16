@@ -36,10 +36,10 @@ class Header extends React.Component{
     const oldData = this.state.initialData
     const oldDataStringed = JSON.stringify({data:{oldData}})
     const newData = {
-      name: this.state.newName,
-      phone: this.state.newPhone,
-      email: this.state.newEmail,
-      location: this.state.newLocation
+      name: this.state.name,
+      phone: this.state.phone,
+      email: this.state.email,
+      location: this.state.location
     }
     const newDataStringed = JSON.stringify({data:{newData}})
     if(oldDataStringed !== newDataStringed){
