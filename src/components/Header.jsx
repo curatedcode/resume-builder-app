@@ -78,7 +78,6 @@ class Header extends React.Component{
               <input name='location' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
             </div>
           </div>
-          <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center m-2"></div>
         </section>
       </>
     )
