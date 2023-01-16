@@ -1,4 +1,5 @@
 import React from "react";
+import { FaEdit } from 'react-icons/fa'
 
 class DegreeCard extends React.Component{
   constructor(){
@@ -47,40 +48,40 @@ class DegreeCard extends React.Component{
     return(
       <>
         <div>
-          <button className={this.state.editable ? "hidden":""} onClick={()=>{
+          <FaEdit className={`${this.state.editable ? "hidden":""} float-right`} onClick={()=>{
             this.setState({editable: true})
-          }}>Edit</button>
+          }}>Edit</FaEdit>
           <button className={this.state.editable ? "":"hidden"} onClick={()=>{
             this.updateData()
             this.setState({editable:false})
           }}>Save</button>
         </div>
-        <div className="grid mb-4">
+        <div className="grid mb-4 gap-2">
           <span className={`text-lg font-bold ${this.state.editable ? "hidden":""}`}>{this.state.school}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.school} onChange={e=>this.setState({school: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.school} onChange={e=>this.setState({school: e.target.value})}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.degree}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.degree} onChange={e=>this.setState({degree: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.degree} onChange={e=>this.setState({degree: e.target.value})}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.study}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.study} onChange={e=>this.setState({study: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.study} onChange={e=>this.setState({study: e.target.value})}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
           </div>
           <div className="flex gap-2 opacity-50">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.dateStart} onChange={e=>this.setState({dateStart: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateStart} onChange={e=>this.setState({dateStart: e.target.value})}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>to</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.dateEnd} onChange={e=>this.setState({dateEnd: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateEnd} onChange={e=>this.setState({dateEnd: e.target.value})}></input>
             </div>
           </div>
         </div>
