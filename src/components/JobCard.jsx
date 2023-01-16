@@ -17,14 +17,9 @@ class JobCard extends React.Component{
       location: '',
       dateStart: '',
       dateEnd: '',
-      quillData: '',
-      newTitle: '',
-      newCompany: '',
-      newLocation: '',
-      newDateStart: '',
-      newDateEnd: '',
-      newQuillData: ''
+      quillData: ''
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount(){
@@ -44,6 +39,14 @@ class JobCard extends React.Component{
     const name = target.name
     const value = target.value
     this.setState({[name]:value})
+  }
+  reset(){
+    this.setState({title: this.state.initialData.title})
+    this.setState({company: this.state.initialData.company})
+    this.setState({location: this.state.initialData.location})
+    this.setState({dateStart: this.state.initialData.dateStart})
+    this.setState({dateEnd: this.state.initialData.dateEnd})
+    this.setState({quillData: this.state.initialData.quillData})
   }
   updateData(){
     let localData = this.state.initialJobsData
@@ -81,6 +84,7 @@ class JobCard extends React.Component{
               this.setState({editable:false})
             }}>Save</button>
             <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+              this.reset()
               this.setState({editable:false})
             }}>Cancel</button>
           </div>
@@ -88,26 +92,26 @@ class JobCard extends React.Component{
         <div className="grid mb-4 gap-2">
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newTitle" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.title} onChange={this.handleChange}></input>
+              <input name="title" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.title} onChange={this.handleChange}></input>
           </div>
           <div className="opacity-50 flex gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newDateStart" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateStart} onChange={this.handleChange}></input>
+              <input name="dateStart" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
             <span>to</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="newDateEnd" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateEnd} onChange={this.handleChange}></input>
+              <input name="dateEnd" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.company}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input name="newCompany" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.company} onChange={this.handleChange}></input>
+            <input name="company" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.company} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input name="newLocation" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
+            <input name="location" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.location} onChange={this.handleChange}></input>
           </div>
           <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit`}>
             {
@@ -116,7 +120,7 @@ class JobCard extends React.Component{
           </div>
           <div className={`${this.state.editable ? "":"hidden"}`}>
             <ReactQuill theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
-              this.setState({newQuillData: value})
+              this.setState({quillData: value})
             }} />
           </div>
         </div>

@@ -7,14 +7,10 @@ class Header extends React.Component{
     this.state = {
       initialData: JSON.parse(localStorage.getItem('cv-header')).data,
       editable: false,
-      name: JSON.parse(localStorage.getItem('cv-header')).data.name,
-      phone: JSON.parse(localStorage.getItem('cv-header')).data.phone,
-      email: JSON.parse(localStorage.getItem('cv-header')).data.email,
-      location: JSON.parse(localStorage.getItem('cv-header')).data.location,
-      newName: '',
-      newPhone: '',
-      newEmail: '',
-      newLocation: ''
+      name: '',
+      phone: '',
+      email: '',
+      location: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -29,6 +25,12 @@ class Header extends React.Component{
     const name = target.name
     const value = target.value
     this.setState({[name]:value})
+  }
+  reset(){
+    this.setState({name: this.state.initialData.name})
+    this.setState({phone: this.state.initialData.phone})
+    this.setState({email: this.state.initialData.email})
+    this.setState({location: this.state.initialData.location})
   }
   updateData(){
     const oldData = this.state.initialData
@@ -57,6 +59,7 @@ class Header extends React.Component{
               this.setState({editable:false})
             }}>Save</button>
             <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+              this.reset()
               this.setState({editable:false})
             }}>Cancel</button>
           </div>
@@ -64,7 +67,7 @@ class Header extends React.Component{
         <section className="grid gap-2">
           <h1 className={`font-extrabold text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`font-extrabold text-xl text-blue-400 place-self-center ${this.state.editable ? "":"hidden"}`}>
-            <input name='newName' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.name} onChange={this.handleChange}></input>
+            <input name='name' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.name} onChange={this.handleChange}></input>
           </div>
           <div className="grid text-ellipsis overflow-hidden whitespace-nowrap gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.phone}</span>
