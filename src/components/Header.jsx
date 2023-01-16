@@ -64,7 +64,7 @@ class Header extends React.Component{
           <div className={`font-extrabold text-xl text-blue-400 place-self-center ${this.state.editable ? "":"hidden"}`}>
             <input name='name' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.name} onChange={this.handleChange}></input>
           </div>
-          <div className="grid text-ellipsis overflow-hidden whitespace-nowrap gap-2">
+          <div className="grid">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.phone}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
               <input name='phone' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.phone} onChange={this.handleChange}></input>
