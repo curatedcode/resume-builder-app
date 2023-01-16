@@ -39,6 +39,12 @@ class JobCard extends React.Component{
     this.setState({dateEnd: localStorageData[objectKey].dateEnd})
     this.setState({quillData: localStorageData[objectKey].quillData})
   }
+  handleChange(event){
+    const target = event.target
+    const name = target.name
+    const value = target.value
+    this.setState({[name]:value})
+  }
   updateData(){
     let localData = this.state.initialJobsData
     const newData = {
@@ -82,26 +88,26 @@ class JobCard extends React.Component{
         <div className="grid mb-4 gap-2">
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.title} onChange={e=>this.setState({newTitle: e.target.value})}></input>
+              <input name="newTitle" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.title} onChange={this.handleChange}></input>
           </div>
           <div className="opacity-50 flex gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateStart} onChange={e=>this.setState({newDateStart: e.target.value})}></input>
+              <input name="newDateStart" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
             <span>to</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateEnd} onChange={e=>this.setState({newDateEnd: e.target.value})}></input>
+              <input name="newDateEnd" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.company}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.company} onChange={e=>this.setState({newCompany: e.target.value})}></input>
+            <input name="newCompany" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.company} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={e=>this.setState({newLocation: e.target.value})}></input>
+            <input name="newLocation" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
           </div>
           <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit`}>
             {
@@ -110,8 +116,7 @@ class JobCard extends React.Component{
           </div>
           <div className={`${this.state.editable ? "":"hidden"}`}>
             <ReactQuill theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
-              this.setState({quillData: value})
-              console.log(value)
+              this.setState({newQuillData: value})
             }} />
           </div>
         </div>

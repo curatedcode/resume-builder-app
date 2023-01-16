@@ -16,12 +16,19 @@ class Header extends React.Component{
       newEmail: '',
       newLocation: ''
     }
+    this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount(){
     this.setState({name: this.state.initialData.name})
     this.setState({phone: this.state.initialData.phone})
     this.setState({email: this.state.initialData.email})
     this.setState({location: this.state.initialData.location})
+  }
+  handleChange(event){
+    const target = event.target
+    const name = target.name
+    const value = target.value
+    this.setState({[name]:value})
   }
   updateData(){
     const oldData = this.state.initialData
@@ -57,20 +64,20 @@ class Header extends React.Component{
         <section className="grid gap-2">
           <h1 className={`font-extrabold text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`font-extrabold text-xl text-blue-400 place-self-center ${this.state.editable ? "":"hidden"}`}>
-            <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.name} onChange={e=>this.setState({newName: e.target.value})}></input>
+            <input name='newName' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.name} onChange={this.handleChange}></input>
           </div>
           <div className="grid text-ellipsis overflow-hidden whitespace-nowrap gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.phone}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.phone} onChange={e=>this.setState({newPhone: e.target.value})}></input>
+              <input name='newPhone' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.phone} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.email}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.email} onChange={e=>this.setState({newEmail: e.target.value})}></input>
+              <input name='newEmail' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.email} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={e=>this.setState({newLocation: e.target.value})}></input>
+              <input name='newLocation' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
             </div>
           </div>
           <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center m-2"></div>
