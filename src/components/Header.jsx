@@ -33,18 +33,13 @@ class Header extends React.Component{
     this.setState({location: this.state.initialData.location})
   }
   updateData(){
-    const oldData = this.state.initialData
-    const oldDataStringed = JSON.stringify({data:{oldData}})
-    const newData = {
+    const data = {
       name: this.state.name,
       phone: this.state.phone,
       email: this.state.email,
       location: this.state.location
     }
-    const newDataStringed = JSON.stringify({data:{newData}})
-    if(oldDataStringed !== newDataStringed){
-      localStorage.setItem('cv-header',newDataStringed)
-    }
+    localStorage.setItem('cv-header',JSON.stringify({data}))
   }
   render(){
     return(
@@ -72,15 +67,15 @@ class Header extends React.Component{
           <div className="grid text-ellipsis overflow-hidden whitespace-nowrap gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.phone}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name='newPhone' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.phone} onChange={this.handleChange}></input>
+              <input name='phone' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.phone} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.email}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name='newEmail' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.email} onChange={this.handleChange}></input>
+              <input name='email' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.email} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name='newLocation' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
+              <input name='location' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
             </div>
           </div>
           <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center m-2"></div>
