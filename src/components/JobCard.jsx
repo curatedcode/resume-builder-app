@@ -51,12 +51,12 @@ class JobCard extends React.Component{
   updateData(){
     let localData = this.state.initialJobsData
     const newData = {
-      title: this.props.newTitle,
-      company: this.props.newCompany,
-      location: this.props.newLocation,
-      dateStart: this.props.newDateStart,
-      dateEnd: this.props.newDateEnd,
-      quillData: this.props.newQuillData,
+      title: this.state.title,
+      company: this.state.company,
+      location: this.state.location,
+      dateStart: this.state.dateStart,
+      dateEnd: this.state.dateEnd,
+      quillData: this.state.quillData,
     }
     localData[this.props.objectKey] = newData
     console.log(localData)

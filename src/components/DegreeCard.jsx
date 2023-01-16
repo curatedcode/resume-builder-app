@@ -45,12 +45,12 @@ class DegreeCard extends React.Component{
   updateData(){
     let localData = this.state.initialJobsData
     const newData = {
-      school: this.props.newSchool,
-      degree: this.props.newDegree,
-      study: this.props.newStudy,
-      location: this.props.newLocation,
-      dateStart: this.props.newDateStart,
-      dateEnd: this.props.newDateEnd
+      school: this.state.school,
+      degree: this.state.degree,
+      study: this.state.study,
+      location: this.state.location,
+      dateStart: this.state.dateStart,
+      dateEnd: this.state.dateEnd
     }
     if(JSON.stringify(this.state.initialData) !== JSON.stringify(newData)){
       localData[this.props.objectKey] = newData
