@@ -1,6 +1,7 @@
 import React from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+import { FaEdit } from 'react-icons/fa'
 const parse = require('html-react-parser')
 
 
@@ -59,37 +60,37 @@ class JobCard extends React.Component{
     return(
       <>
         <div>
-          <button className={this.state.editable ? "hidden":""} onClick={()=>{
+          <FaEdit className={`${this.state.editable ? "hidden":""} float-right`} onClick={()=>{
             this.setState({editable: true})
-          }}>Edit</button>
+          }}>Edit</FaEdit>
           <button className={this.state.editable ? "":"hidden"} onClick={()=>{
             this.updateData()
             this.setState({editable:false})
           }}>Save</button>
         </div>
-        <div className="grid mb-4">
+        <div className="grid mb-4 gap-2">
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.title} onChange={e=>this.setState({title: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.title} onChange={e=>this.setState({title: e.target.value})}></input>
           </div>
           <div className="opacity-50 flex gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.dateStart} onChange={e=>this.setState({dateStart: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateStart} onChange={e=>this.setState({dateStart: e.target.value})}></input>
             </div>
             <span>to</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.dateEnd} onChange={e=>this.setState({dateEnd: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateEnd} onChange={e=>this.setState({dateEnd: e.target.value})}></input>
             </div>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.company}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input value={this.state.company} onChange={e=>this.setState({company: e.target.value})}></input>
+            <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.company} onChange={e=>this.setState({company: e.target.value})}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
+            <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
           </div>
           <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit`}>
             {

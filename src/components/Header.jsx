@@ -1,4 +1,4 @@
-
+import { FaEdit } from 'react-icons/fa'
 import React from "react";
 
 class Header extends React.Component{
@@ -6,7 +6,7 @@ class Header extends React.Component{
     super()
     this.state = {
       initialData: JSON.parse(localStorage.getItem('cv-header')).data,
-      editable: false,
+      editable: true,
       name: JSON.parse(localStorage.getItem('cv-header')).data.name,
       phone: JSON.parse(localStorage.getItem('cv-header')).data.phone,
       email: JSON.parse(localStorage.getItem('cv-header')).data.email,
@@ -37,9 +37,9 @@ class Header extends React.Component{
     return(
       <>
         <div>
-          <button className={this.state.editable ? "hidden":""} onClick={()=>{
+          <FaEdit className={`${this.state.editable ? "hidden":""} float-right`} onClick={()=>{
             this.setState({editable: true})
-          }}>Edit</button>
+          }}>Edit</FaEdit>
           <button className={this.state.editable ? "":"hidden"} onClick={()=>{
             this.updateData()
             this.setState({editable:false})
@@ -48,20 +48,20 @@ class Header extends React.Component{
         <section className="grid gap-2">
           <h1 className={`font-extrabold text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`font-extrabold text-xl text-blue-400 place-self-center ${this.state.editable ? "":"hidden"}`}>
-            <input value={this.state.name} onChange={e=>this.setState({name: e.target.value})}></input>
+            <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.name} onChange={e=>this.setState({name: e.target.value})}></input>
           </div>
-          <div className="grid text-ellipsis overflow-hidden whitespace-nowrap">
+          <div className="grid text-ellipsis overflow-hidden whitespace-nowrap gap-2">
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.phone}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.phone} onChange={e=>this.setState({phone: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.phone} onChange={e=>this.setState({phone: e.target.value})}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.email}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.email} onChange={e=>this.setState({email: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.email} onChange={e=>this.setState({email: e.target.value})}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
             <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
+              <input className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.location} onChange={e=>this.setState({location: e.target.value})}></input>
             </div>
           </div>
           <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center m-2"></div>
