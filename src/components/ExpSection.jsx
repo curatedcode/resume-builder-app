@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "react-uuid";
 import JobCard from './JobCard'
 
 class ExpSection extends React.Component{
@@ -14,7 +15,7 @@ class ExpSection extends React.Component{
         <section className="mt-2 grid">
           <h2 className="place-self-center text-xl text-blue-400 mb-2">Professional Experience</h2>
           {
-            this.state.initialData.map((job) => <JobCard key={job.title} objectKey={this.state.initialData.findIndex((obj)=>obj.title === job.title)}/>)
+            this.state.initialData.map((job) => <JobCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.title === job.title)}/>)
           }
           <button onClick={()=>{
             const data = this.state.initialData
