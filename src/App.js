@@ -9,8 +9,9 @@ class App extends React.Component {
         <div className="cv-container bg-slate-50 grid">
           <div className="cv-content grid my-6 p-4 bg-slate-200 rounded-lg shadow-xl w-11/12 place-self-center">
             <Header />
+            <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center my-2"></div>
             <Experience />
-            <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center mb-2"></div>
+            <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center my-2"></div>
             <Education />
           </div>
         </div>
