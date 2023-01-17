@@ -7,11 +7,11 @@ class App extends React.Component {
     return (
       <>        
         <div className="cv-container bg-slate-50 grid">
-          <div className="cv-content grid my-6 p-4 bg-slate-200 rounded-lg shadow-xl w-11/12 place-self-center">
+          <div className="cv-content grid my-6 p-4 bg-slate-200 rounded-lg shadow-xl">
             <Header />
-            <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center my-2"></div>
+            <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center my-3"></div>
             <Experience />
-            <div className="border-b-2 rounded-full border-black border-opacity-10 w-28 place-self-center my-2"></div>
+            <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center my-3"></div>
             <Education />
           </div>
         </div>
