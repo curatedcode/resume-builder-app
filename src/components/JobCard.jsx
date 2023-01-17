@@ -71,24 +71,9 @@ class JobCard extends React.Component{
     }
     return(
       <>
-        <div>
-          <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors float-right`} onClick={()=>{
-            this.setState({editable: true})
-          }}>Edit</FaEdit>
-          <div className={`${this.state.editable ? "":"hidden"} flex justify-between items-center gap-8 text-xl text-white mb-2`}>
-            <div>
-              <button className="hover:bg-blue-600 font-bold mr-8 py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
-                this.updateData()
-                this.setState({editable:false})
-              }}>Save</button>
-              <button className="hover:bg-blue-600 font-bold py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
-                this.reset()
-                this.setState({editable:false})
-              }}>Cancel</button>
-            </div>
-            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
-          </div>
-        </div>
+        <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end`} onClick={()=>{
+          this.setState({editable: true})
+        }}>Edit</FaEdit>
         <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
@@ -128,6 +113,21 @@ class JobCard extends React.Component{
             <ReactQuill className="focus-visible:outline-blue-400" theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
               this.setState({quillData: value})
             }} />
+          </div>
+        </div>
+        <div>
+          <div className={`${this.state.editable ? "":"hidden"} flex justify-between items-center gap-8 text-xl text-white mb-2`}>
+            <div>
+              <button className="hover:bg-blue-600 font-bold mr-8 py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+                this.updateData()
+                this.setState({editable:false})
+              }}>Save</button>
+              <button className="hover:bg-blue-600 font-bold py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+                this.reset()
+                this.setState({editable:false})
+              }}>Cancel</button>
+            </div>
+            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
           </div>
         </div>
       </>

@@ -60,24 +60,9 @@ class DegreeCard extends React.Component{
   render(){
     return(
       <>
-        <div>
-          <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors float-right`} onClick={()=>{
-            this.setState({editable: true})
-          }}>Edit</FaEdit>
-          <div className={`${this.state.editable ? "":"hidden"} flex justify-between items-center gap-8 text-xl text-white mb-2`}>
-            <div>
-              <button className="hover:bg-blue-600 font-bold mr-8 py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
-                this.updateData()
-                this.setState({editable:false})
-              }}>Save</button>
-              <button className="hover:bg-blue-600 font-bold py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
-                this.reset()
-                this.setState({editable:false})
-              }}>Cancel</button>
-            </div>
-            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
-          </div>
-        </div>
+        <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end`} onClick={()=>{
+          this.setState({editable: true})
+        }}>Edit</FaEdit>
         <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
           <span className={`text-lg font-bold ${this.state.editable ? "hidden":""}`}>{this.state.school}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
@@ -111,6 +96,21 @@ class DegreeCard extends React.Component{
               <label className="font-bold mb-1" htmlFor="dateEnd">End date</label>
               <input name="dateEnd" className="border-2 border-gray-300 p-2 px-4 rounded-md focus-visible:outline-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
+          </div>
+        </div>
+        <div>
+          <div className={`${this.state.editable ? "":"hidden"} flex justify-between items-center gap-8 text-xl text-white mb-2`}>
+            <div>
+              <button className="hover:bg-blue-600 font-bold mr-8 py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+                this.updateData()
+                this.setState({editable:false})
+              }}>Save</button>
+              <button className="hover:bg-blue-600 font-bold py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+                this.reset()
+                this.setState({editable:false})
+              }}>Cancel</button>
+            </div>
+            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
           </div>
         </div>
       </>
