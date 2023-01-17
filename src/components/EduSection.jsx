@@ -12,8 +12,9 @@ class EduSection extends React.Component{
   render(){
     return(
       <>
-        <section className="mt-2 grid">
-          <h2 className="place-self-center text-xl text-blue-400 mb-2">Education</h2>
+        <section className="grid">
+          <h2 className="place-self-center text-xl text-blue-400">Education</h2>
+          <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center my-3"></div>
           {
             this.state.initialData.map(degree => <DegreeCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.degree === degree.degree)}/>)
           }
