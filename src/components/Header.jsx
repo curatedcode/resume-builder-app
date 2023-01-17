@@ -59,22 +59,25 @@ class Header extends React.Component{
             }}>Cancel</button>
           </div>
         </div>
-        <section className="grid gap-2">
+        <section className={`grid ${this.state.editable ? "gap-4":"gap-2"}`}>
           <h1 className={`font-extrabold text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`font-extrabold text-xl text-blue-400 place-self-center ${this.state.editable ? "":"hidden"}`}>
             <input name='name' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.name} onChange={this.handleChange}></input>
           </div>
-          <div className="grid">
+          <div className={`grid ${this.state.editable ? "gap-4":""}`}>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.phone}</span>
-            <div className={`${this.state.editable ? "":"hidden"}`}>
+            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+              <label className="font-bold mb-1" htmlFor="phone">Phone</label>
               <input name='phone' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.phone} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.email}</span>
-            <div className={`${this.state.editable ? "":"hidden"}`}>
+            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+              <label className="font-bold mb-1" htmlFor="email">Email</label>
               <input name='email' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.email} onChange={this.handleChange}></input>
             </div>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
-            <div className={`${this.state.editable ? "":"hidden"}`}>
+            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+              <label className="font-bold mb-1" htmlFor="location">Location</label>
               <input name='location' className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
             </div>
           </div>

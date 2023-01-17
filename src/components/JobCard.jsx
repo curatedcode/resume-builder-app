@@ -2,6 +2,7 @@ import React from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { FaEdit } from 'react-icons/fa'
+import { MdOutlineDeleteForever } from 'react-icons/md'
 const parse = require('html-react-parser')
 
 
@@ -71,36 +72,39 @@ class JobCard extends React.Component{
     return(
       <>
         <div>
-          <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 float-right`} onClick={()=>{
+          <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors float-right`} onClick={()=>{
             this.setState({editable: true})
           }}>Edit</FaEdit>
-          <div className='flex justify-center gap-8 text-xl text-white mb-2'>
-            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500 transition-colors`} onClick={()=>{
-              this.updateData()
-              this.setState({editable:false})
-            }}>Save</button>
-            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500 transition-colors`} onClick={()=>{
-              this.reset()
-              this.setState({editable:false})
-            }}>Cancel</button>
+          <div className={`${this.state.editable ? "":"hidden"} flex justify-between items-center gap-8 text-xl text-white mb-2`}>
+            <div>
+              <button className="hover:bg-blue-600 font-bold mr-8 py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+                this.updateData()
+                this.setState({editable:false})
+              }}>Save</button>
+              <button className="hover:bg-blue-600 font-bold py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+                this.reset()
+                this.setState({editable:false})
+              }}>Cancel</button>
+            </div>
+            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
           </div>
         </div>
-        <div className={`grid mb-4 ${this.state.editable ? 'gap-2':''}`}>
+        <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
               <label className="font-bold mb-1" htmlFor="title">Job title</label>
               <input name="title" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.title} onChange={this.handleChange}></input>
           </div>
-          <div className={`flex gap-2 ${this.state.editable ? '':'opacity-50'}`}>
+          <div className={`flex ${this.state.editable ? 'flex-col gap-4':'opacity-50 flex-row gap-2'}`}>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
             <div className={`${this.state.editable ? "":"hidden"} grid`}>
-              <label className="font-bold mb-1" htmlFor="dateEnd">Start date (MM/YYYY)</label>
+              <label className="font-bold mb-1" htmlFor="dateEnd">Start date</label>
               <input name="dateStart" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
-            <span className={this.state.editable ? "hidden":''}>to</span>
+            <span className={this.state.editable ? "hidden":''}>-</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
             <div className={`${this.state.editable ? "":"hidden"} grid`}>
-              <label className="font-bold mb-1" htmlFor="dateEnd">End date (MM/YYYY)</label>
+              <label className="font-bold mb-1" htmlFor="dateEnd">End date</label>
               <input name="dateEnd" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
           </div>
