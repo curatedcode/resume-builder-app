@@ -44,21 +44,9 @@ class Header extends React.Component{
   render(){
     return(
       <>
-        <div>
-          <FaEdit className={`${this.state.editable ? "hidden":""} float-right`} onClick={()=>{
-            this.setState({editable: true})
-          }}>Edit</FaEdit>
-          <div className='flex justify-center gap-8 text-xl text-white mb-2'>
-            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
-              this.updateData()
-              this.setState({editable:false})
-            }}>Save</button>
-            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
-              this.reset()
-              this.setState({editable:false})
-            }}>Cancel</button>
-          </div>
-        </div>
+        <FaEdit className={`${this.state.editable ? "hidden":""} place-self-end`} onClick={()=>{
+          this.setState({editable: true})
+        }}>Edit</FaEdit>
         <section className={`grid ${this.state.editable ? "gap-4":"gap-2"}`}>
           <h1 className={`font-extrabold text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`font-extrabold text-xl text-blue-400 place-self-center ${this.state.editable ? "":"hidden"}`}>
@@ -82,6 +70,18 @@ class Header extends React.Component{
             </div>
           </div>
         </section>
+        <div>
+          <div className='flex justify-center gap-8 text-xl text-white mb-2'>
+            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+              this.updateData()
+              this.setState({editable:false})
+            }}>Save</button>
+            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+              this.reset()
+              this.setState({editable:false})
+            }}>Cancel</button>
+          </div>
+        </div>
       </>
     )
   }
