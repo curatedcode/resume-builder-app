@@ -71,43 +71,48 @@ class JobCard extends React.Component{
     return(
       <>
         <div>
-          <FaEdit className={`${this.state.editable ? "hidden":""} float-right`} onClick={()=>{
+          <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 float-right`} onClick={()=>{
             this.setState({editable: true})
           }}>Edit</FaEdit>
           <div className='flex justify-center gap-8 text-xl text-white mb-2'>
-            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500 transition-colors`} onClick={()=>{
               this.updateData()
               this.setState({editable:false})
             }}>Save</button>
-            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500`} onClick={()=>{
+            <button className={`${this.state.editable ? "":"hidden"} hover:bg-blue-600 py-1 px-2 rounded-md bg-blue-500 transition-colors`} onClick={()=>{
               this.reset()
               this.setState({editable:false})
             }}>Cancel</button>
           </div>
         </div>
-        <div className="grid mb-4">
+        <div className={`grid mb-4 ${this.state.editable ? 'gap-2':''}`}>
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
-          <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="title" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.title} onChange={this.handleChange}></input>
+          <div className={`${this.state.editable ? "":"hidden"} grid`}>
+              <label className="font-bold mb-1" htmlFor="title">Job title</label>
+              <input name="title" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.title} onChange={this.handleChange}></input>
           </div>
-          <div className="opacity-50 flex gap-2">
+          <div className={`flex gap-2 ${this.state.editable ? '':'opacity-50'}`}>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
-            <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="dateStart" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
+            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+              <label className="font-bold mb-1" htmlFor="dateEnd">Start date (MM/YYYY)</label>
+              <input name="dateStart" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
-            <span>to</span>
+            <span className={this.state.editable ? "hidden":''}>to</span>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
-            <div className={`${this.state.editable ? "":"hidden"}`}>
-              <input name="dateEnd" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
+            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+              <label className="font-bold mb-1" htmlFor="dateEnd">End date (MM/YYYY)</label>
+              <input name="dateEnd" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.company}</span>
-          <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input name="company" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.company} onChange={this.handleChange}></input>
+          <div className={`${this.state.editable ? "":"hidden"} grid`}>
+            <label className="font-bold mb-1" htmlFor="company">Company</label>
+            <input name="company" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.company} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.location}</span>
-          <div className={`${this.state.editable ? "":"hidden"}`}>
-            <input name="location" className="border-2 border-gray-500 px-2 rounded-lg active:border-blue-400 hover:border-blue-400 focus:border-blue-400" value={this.state.location} onChange={this.handleChange}></input>
+          <div className={`${this.state.editable ? "":"hidden"} grid`}>
+            <label className="font-bold mb-1" htmlFor="location">Location</label>
+            <input name="location" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.location} onChange={this.handleChange}></input>
           </div>
           <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit`}>
             {
@@ -115,7 +120,8 @@ class JobCard extends React.Component{
             }
           </div>
           <div className={`${this.state.editable ? "":"hidden"}`}>
-            <ReactQuill theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
+            <label className="font-bold mb-1" htmlFor="description">Description</label>
+            <ReactQuill className="focus-visible:outline-blue-400" theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
               this.setState({quillData: value})
             }} />
           </div>
