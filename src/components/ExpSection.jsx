@@ -1,7 +1,6 @@
 import React from "react";
 import uuid from "react-uuid";
 import JobCard from './JobCard'
-import { MdOutlineDeleteForever } from "react-icons/md";
 
 class ExpSection extends React.Component{
   constructor(){
@@ -24,7 +23,7 @@ class ExpSection extends React.Component{
           {
             this.state.initialData.map((job) => {return<>
               <JobCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.title === job.title)}/>
-              <MdOutlineDeleteForever key={uuid()} onClick={()=>this.deleteCard(this.state.initialData.findIndex((obj)=>obj.title === job.title))} className={`text-black text-xl place-self-end -mt-4 mb-2 hover:cursor-pointer hover:text-blue-500 transition-colors ${this.state.editable ? '':'hidden'}`}></MdOutlineDeleteForever>
+              <button key={uuid()} onClick={()=>this.deleteCard(this.state.initialData.findIndex((obj)=>obj.title === job.title))} className="text-blue-400 hover:text-blue-500 transition-colors place-self-start -mt-4 mb-4">- Remove</button>
               </>
             })
           }

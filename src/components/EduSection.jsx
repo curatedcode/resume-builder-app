@@ -1,7 +1,6 @@
 import React from "react";
 import uuid from "react-uuid";
 import DegreeCard from './DegreeCard'
-import { MdOutlineDeleteForever } from "react-icons/md";
 
 class EduSection extends React.Component{
   constructor(){
@@ -24,7 +23,7 @@ class EduSection extends React.Component{
           {
             this.state.initialData.map(degree => {return<>
               <DegreeCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.degree === degree.degree)}/>
-              <MdOutlineDeleteForever key={uuid()} onClick={()=>this.deleteCard(this.state.initialData.findIndex((obj)=>obj.degree === degree.degree))} className="text-black text-xl place-self-end -mt-4 mb-2 hover:cursor-pointer hover:text-blue-500 transition-colors"></MdOutlineDeleteForever>
+              <button key={uuid()} onClick={()=>this.deleteCard(this.state.initialData.findIndex((obj)=>obj.degree === degree.degree))} className="text-blue-400 hover:text-blue-500 transition-colors place-self-start -mt-4 mb-4">- Remove</button>
               </>
             })
           }
