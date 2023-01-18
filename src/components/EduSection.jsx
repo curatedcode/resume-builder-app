@@ -1,6 +1,7 @@
 import React from "react";
 import uuid from "react-uuid";
 import DegreeCard from './DegreeCard'
+import { MdOutlineDeleteForever } from "react-icons/md";
 
 class EduSection extends React.Component{
   constructor(){
@@ -9,6 +10,11 @@ class EduSection extends React.Component{
       initialData: JSON.parse(localStorage.getItem('cv-education'))
     }
   }
+  deleteCard(index){
+    const data = this.state.initialData.filter(obj => obj !== this.state.initialData[index])
+    this.setState({initialData: data})
+    localStorage.setItem('cv-education',JSON.stringify(data))
+  }
   render(){
     return(
       <>
@@ -16,7 +22,11 @@ class EduSection extends React.Component{
           <h2 className="place-self-center text-xl text-blue-400">Education</h2>
           <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center my-3"></div>
           {
-            this.state.initialData.map(degree => <DegreeCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.degree === degree.degree)}/>)
+            this.state.initialData.map(degree => {return<>
+              <DegreeCard key={uuid()} objectKey={this.state.initialData.findIndex((obj)=>obj.degree === degree.degree)}/>
+              <MdOutlineDeleteForever key={uuid()} onClick={()=>this.deleteCard(this.state.initialData.findIndex((obj)=>obj.degree === degree.degree))} className="text-black text-xl place-self-end -mt-4 mb-2 hover:cursor-pointer hover:text-blue-500 transition-colors"></MdOutlineDeleteForever>
+              </>
+            })
           }
           <button onClick={()=>{
             const data = this.state.initialData
