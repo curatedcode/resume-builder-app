@@ -62,7 +62,7 @@ class DegreeCard extends React.Component{
       <>
         <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end`} onClick={()=>{
           this.setState({editable: true})
-        }}>Edit</FaEdit>
+        }}></FaEdit>
         <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
           <span className={`text-lg font-bold ${this.state.editable ? "hidden":""}`}>{this.state.school}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
@@ -71,8 +71,8 @@ class DegreeCard extends React.Component{
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.degree}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
-              <label className="font-bold mb-1" htmlFor="degree">Degree</label>
-              <input name="degree" className="border-2 border-gray-300 p-2 px-4 rounded-md focus-visible:outline-blue-400" value={this.state.degree} onChange={this.handleChange}></input>
+            <label className="font-bold mb-1" htmlFor="degree">Degree</label>
+            <input name="degree" className="border-2 border-gray-300 p-2 px-4 rounded-md focus-visible:outline-blue-400" value={this.state.degree} onChange={this.handleChange}></input>
           </div>
           <span className={`${this.state.editable ? "hidden":""}`}>{this.state.study}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>

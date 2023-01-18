@@ -73,12 +73,12 @@ class JobCard extends React.Component{
       <>
         <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end`} onClick={()=>{
           this.setState({editable: true})
-        }}>Edit</FaEdit>
+        }}></FaEdit>
         <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
-              <label className="font-bold mb-1" htmlFor="title">Job title</label>
-              <input name="title" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.title} onChange={this.handleChange}></input>
+            <label className="font-bold mb-1" htmlFor="title">Job title</label>
+            <input name="title" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.title} onChange={this.handleChange}></input>
           </div>
           <div className={`flex ${this.state.editable ? 'flex-col gap-4':'opacity-50 flex-row gap-2'}`}>
             <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateStart}</span>
