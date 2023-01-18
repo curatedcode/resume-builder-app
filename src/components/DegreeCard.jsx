@@ -1,6 +1,5 @@
 import React from "react";
 import { FaEdit } from 'react-icons/fa'
-import { MdOutlineDeleteForever } from "react-icons/md";
 
 class DegreeCard extends React.Component{
   constructor(){
@@ -110,7 +109,6 @@ class DegreeCard extends React.Component{
                 this.setState({editable:false})
               }}>Cancel</button>
             </div>
-            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
           </div>
         </div>
       </>

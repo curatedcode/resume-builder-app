@@ -2,7 +2,6 @@ import React from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { FaEdit } from 'react-icons/fa'
-import { MdOutlineDeleteForever } from 'react-icons/md'
 const parse = require('html-react-parser')
 
 
@@ -127,7 +126,6 @@ class JobCard extends React.Component{
                 this.setState({editable:false})
               }}>Cancel</button>
             </div>
-            <MdOutlineDeleteForever onClick={()=>{}} className="transition-colors text-black text-2xl"></MdOutlineDeleteForever>
           </div>
         </div>
       </>
