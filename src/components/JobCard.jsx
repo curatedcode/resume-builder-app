@@ -115,12 +115,12 @@ class JobCard extends React.Component{
           </div>
         </div>
         <div>
-          <div className={`${this.state.editable ? "":"hidden"} flex items-center gap-8 text-xl text-white mb-6`}>
-            <button className="hover:bg-blue-600 font-bold mr-8 py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+          <div className={`${this.state.editable ? "":"hidden"} flex justify-center items-center gap-8 text-xl text-white mb-6`}>
+            <button className="hover:bg-blue-600 font-bold py-1 px-4 rounded-md bg-blue-500 transition-colors" onClick={()=>{
               this.updateData()
               this.setState({editable:false})
             }}>Save</button>
-            <button className="hover:bg-blue-600 font-bold py-1 px-3 rounded-md bg-blue-500 transition-colors" onClick={()=>{
+            <button className="hover:bg-blue-600 font-bold py-1 px-4 rounded-md bg-blue-500 transition-colors" onClick={()=>{
               this.reset()
               this.setState({editable:false})
             }}>Cancel</button>
