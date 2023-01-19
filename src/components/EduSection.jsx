@@ -1,6 +1,19 @@
 import React from "react";
 import uuid from "react-uuid";
 import DegreeCard from './DegreeCard'
+if(localStorage.getItem('cv-education')===null){
+  localStorage.setItem('cv-education', JSON.stringify([
+    {
+      school: "School",
+      degree: "Degree",
+      study: "Study",
+      location: "Location",
+      dateStart: "01/2000",
+      dateEnd: "01/2000",
+      presentSchool: false
+    }
+  ]))
+}
 
 class EduSection extends React.Component{
   constructor(){

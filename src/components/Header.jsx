@@ -3,7 +3,15 @@ import React from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 const parse = require('html-react-parser')
-
+if(localStorage.getItem('cv-header') === null){
+  localStorage.setItem('cv-header',JSON.stringify({
+    name: "Name",
+    phone: "Phone Number",
+    email: "Email",
+    location: "Location",
+    summary: '<p>Summary<p>'
+  }))
+}
 class Header extends React.Component{
   constructor(){
     super()
@@ -82,7 +90,7 @@ class Header extends React.Component{
           </div>
           <div className={`${this.state.editable ? "":"hidden"} mt-2`}>
             <label className="font-bold mb-1" htmlFor="summary">Summary</label>
-            <ReactQuill className="focus-visible:outline-blue-400" modules={{toolbar: ['bold','italic']}} value={this.state.summary} onChange={(value)=>{
+            <ReactQuill className="text-lg focus-visible:outline-blue-400" modules={{toolbar: ['bold','italic']}} value={this.state.summary} onChange={(value)=>{
               this.setState({summary: value})
             }} />
           </div>

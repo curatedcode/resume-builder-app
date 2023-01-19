@@ -1,6 +1,11 @@
 import React from "react";
 import uuid from "react-uuid";
 import SkillCard from './SkillCard'
+if(localStorage.getItem('cv-skills')===null){
+  localStorage.setItem('cv-skills',JSON.stringify([
+    {skill: 'Skill', years: '1'}
+  ]))
+} 
 
 class SkillsSection extends React.Component{
   constructor(){

@@ -1,6 +1,19 @@
 import React from "react";
 import uuid from "react-uuid";
 import JobCard from './JobCard'
+if(localStorage.getItem('cv-experience')===null){
+  localStorage.setItem('cv-experience',JSON.stringify([
+    {
+      title: "Title",
+      company: "Company",
+      location: "Location",
+      dateStart: "01/2000",
+      dateEnd: "01/2000",
+      quillData: '<p>Summary<p>',
+      presentJob: false
+    }
+]))
+}
 
 class ExpSection extends React.Component{
   constructor(){
@@ -12,7 +25,7 @@ class ExpSection extends React.Component{
   deleteCard(index){
     const data = this.state.initialData.filter(obj => obj !== this.state.initialData[index])
     this.setState({initialData: data})
-    localStorage.setItem('cv-education',JSON.stringify(data))
+    localStorage.setItem('cv-experience',JSON.stringify(data))
   }
   render(){
     return(
