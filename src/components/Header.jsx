@@ -1,16 +1,20 @@
 import { FaEdit } from 'react-icons/fa'
 import React from "react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+const parse = require('html-react-parser')
 
 class Header extends React.Component{
   constructor(){
     super()
     this.state = {
-      initialData: JSON.parse(localStorage.getItem('cv-header')).data,
+      initialData: JSON.parse(localStorage.getItem('cv-header')),
       editable: false,
       name: '',
       phone: '',
       email: '',
-      location: ''
+      location: '',
+      summary: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -19,6 +23,7 @@ class Header extends React.Component{
     this.setState({phone: this.state.initialData.phone})
     this.setState({email: this.state.initialData.email})
     this.setState({location: this.state.initialData.location})
+    this.setState({summary: this.state.initialData.summary})
   }
   handleChange(event){
     const target = event.target
@@ -44,10 +49,10 @@ class Header extends React.Component{
   render(){
     return(
       <>
-        <FaEdit className={`${this.state.editable ? "hidden":""} place-self-end`} onClick={()=>{
+        <FaEdit className={`${this.state.editable ? "hidden":""} place-self-end print:hidden text-lg`} onClick={()=>{
           this.setState({editable: true})
         }}>Edit</FaEdit>
-        <section className={`grid mb-4 ${this.state.editable ? "gap-4":""}`}>
+        <section className={`grid mb-2 ${this.state.editable ? "gap-4":""}`}>
           <h1 className={`font-extrabold mb-2 text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
             <label className="font-bold mb-1" htmlFor='name'>Name</label>
@@ -69,6 +74,17 @@ class Header extends React.Component{
               <label className="font-bold mb-1" htmlFor="location">Location</label>
               <input name='location' className="border-2 border-gray-300 p-2 px-4 rounded-md focus-visible:outline-blue-400" defaultValue={this.state.location} onChange={this.handleChange}></input>
             </div>
+          </div>
+          <div className={`${this.state.editable ? "hidden":""} mt-2 prose prose-invert text-inherit text-lg print:text-sm`}>
+            {
+              parse(this.state.summary)
+            }
+          </div>
+          <div className={`${this.state.editable ? "":"hidden"} mt-2`}>
+            <label className="font-bold mb-1" htmlFor="summary">Summary</label>
+            <ReactQuill className="focus-visible:outline-blue-400" value={this.state.summary} onChange={(value)=>{
+              this.setState({summary: value})
+            }} />
           </div>
         </section>
         <div>
