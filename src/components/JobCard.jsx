@@ -70,10 +70,10 @@ class JobCard extends React.Component{
     }
     return(
       <>
-        <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end`} onClick={()=>{
+        <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end print:hidden text-lg`} onClick={()=>{
           this.setState({editable: true})
         }}></FaEdit>
-        <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
+        <div className={`grid ${this.state.editable ? 'gap-4':''}`}>
           <span className={`font-bold text-lg ${this.state.editable ? "hidden":""}`}>{this.state.title}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
             <label className="font-bold mb-1" htmlFor="title">Job title</label>
@@ -102,7 +102,7 @@ class JobCard extends React.Component{
             <label className="font-bold mb-1" htmlFor="location">Location</label>
             <input name="location" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.location} onChange={this.handleChange}></input>
           </div>
-          <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit`}>
+          <div className={`${this.state.editable ? "hidden":""} prose prose-invert text-inherit text-lg leading-none print:text-sm`}>
             {
               parse(this.state.quillData)
             }
@@ -115,7 +115,7 @@ class JobCard extends React.Component{
           </div>
         </div>
         <div>
-          <div className={`${this.state.editable ? "":"hidden"} flex justify-center items-center gap-8 text-xl text-white mb-6`}>
+          <div className={`${this.state.editable ? "":"hidden"} flex justify-center items-center gap-8 text-xl text-white my-4`}>
             <button className="hover:bg-blue-600 font-bold py-1 px-4 rounded-md bg-blue-500 transition-colors" onClick={()=>{
               this.updateData()
               this.setState({editable:false})

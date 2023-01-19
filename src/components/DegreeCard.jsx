@@ -59,10 +59,10 @@ class DegreeCard extends React.Component{
   render(){
     return(
       <>
-        <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end`} onClick={()=>{
+        <FaEdit className={`${this.state.editable ? "hidden":""} hover:cursor-pointer hover:text-blue-500 transition-colors place-self-end print:hidden text-lg`} onClick={()=>{
           this.setState({editable: true})
         }}></FaEdit>
-        <div className={`grid mb-4 ${this.state.editable ? 'gap-4':''}`}>
+        <div className={`grid ${this.state.editable ? 'gap-4':''}`}>
           <span className={`text-lg font-bold ${this.state.editable ? "hidden":""}`}>{this.state.school}</span>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
               <label className="font-bold mb-1" htmlFor="school">School</label>
