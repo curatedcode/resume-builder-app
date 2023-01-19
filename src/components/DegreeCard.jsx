@@ -104,7 +104,7 @@ class DegreeCard extends React.Component{
                   this.setState({presentSchool: true})
                 }
               }}></input>
-              <span>I currently work here</span>
+              <span>Currently attending</span>
             </div>
             <div className={`${this.state.editable ? "":"hidden"} ${this.state.presentSchool ? 'hidden':''} grid`}>
               <label className="font-bold mb-1" htmlFor="dateEnd">End date</label>
