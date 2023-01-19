@@ -13,7 +13,8 @@ class DegreeCard extends React.Component{
       study: '',
       location: '',
       dateStart: '',
-      dateEnd: ''
+      dateEnd: '',
+      presentSchool: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -28,6 +29,7 @@ class DegreeCard extends React.Component{
     this.setState({location: localStorageData[objectKey].location})
     this.setState({dateStart: localStorageData[objectKey].dateStart})
     this.setState({dateEnd: localStorageData[objectKey].dateEnd})
+    this.setState({presentSchool: localStorageData[objectKey].presentSchool})
   }
   handleChange(event){
     const target = event.target
@@ -42,6 +44,7 @@ class DegreeCard extends React.Component{
     this.setState({location: this.state.initialData.location})
     this.setState({dateStart: this.state.initialData.dateStart})
     this.setState({dateEnd: this.state.initialData.dateEnd})
+    this.setState({presentSchool: this.state.initialData.presentSchool})
   }
   updateData(){
     let data = this.state.initialJobsData
@@ -51,7 +54,8 @@ class DegreeCard extends React.Component{
       study: this.state.study,
       location: this.state.location,
       dateStart: this.state.dateStart,
-      dateEnd: this.state.dateEnd
+      dateEnd: this.state.dateEnd,
+      presentSchool: this.state.presentSchool
     }
     data[this.props.objectKey] = newData
     localStorage.setItem('cv-education',JSON.stringify(data))
@@ -90,10 +94,21 @@ class DegreeCard extends React.Component{
               <input name="dateStart" className="border-2 border-gray-300 p-2 px-4 rounded-md focus-visible:outline-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
             <span className={this.state.editable ? "hidden":''}>-</span>
-            <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
-            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+            <span className={`${this.state.editable ? 'hidden':''} ${this.state.presentSchool ? '':'hidden'}`}>Present</span>
+            <span className={`${this.state.editable ? "hidden":""} ${this.state.presentSchool ? 'hidden':""}`}>{this.state.dateEnd}</span>
+            <div className={`${this.state.editable ? '':'hidden'} flex items-center gap-4`}>
+              <input type={'checkbox'} className={`h-6 w-6`} defaultChecked={this.state.presentSchool} onClick={()=>{
+                if(this.state.presentSchool){
+                  this.setState({presentSchool: false})
+                } else {
+                  this.setState({presentSchool: true})
+                }
+              }}></input>
+              <span>I currently work here</span>
+            </div>
+            <div className={`${this.state.editable ? "":"hidden"} ${this.state.presentSchool ? 'hidden':''} grid`}>
               <label className="font-bold mb-1" htmlFor="dateEnd">End date</label>
-              <input name="dateEnd" className="border-2 border-gray-300 p-2 px-4 rounded-md focus-visible:outline-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
+              <input name="dateEnd" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
           </div>
         </div>
