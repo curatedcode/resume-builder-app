@@ -36,7 +36,7 @@ npm install
 5. Finally build and serve the repo
 
 ```
-npm run serve
+npm start
 ```
 
 ## Screenshots
