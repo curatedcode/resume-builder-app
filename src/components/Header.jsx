@@ -82,7 +82,7 @@ class Header extends React.Component{
           </div>
           <div className={`${this.state.editable ? "":"hidden"} mt-2`}>
             <label className="font-bold mb-1" htmlFor="summary">Summary</label>
-            <ReactQuill className="focus-visible:outline-blue-400" value={this.state.summary} onChange={(value)=>{
+            <ReactQuill className="focus-visible:outline-blue-400" modules={{toolbar: ['bold','italic']}} value={this.state.summary} onChange={(value)=>{
               this.setState({summary: value})
             }} />
           </div>
