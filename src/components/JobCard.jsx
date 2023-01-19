@@ -17,7 +17,8 @@ class JobCard extends React.Component{
       location: '',
       dateStart: '',
       dateEnd: '',
-      quillData: ''
+      quillData: '',
+      presentJob: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -33,6 +34,7 @@ class JobCard extends React.Component{
     this.setState({dateStart: localStorageData[objectKey].dateStart})
     this.setState({dateEnd: localStorageData[objectKey].dateEnd})
     this.setState({quillData: localStorageData[objectKey].quillData})
+    this.setState({presentJob: localStorageData[objectKey].presentJob})
   }
   handleChange(event){
     const target = event.target
@@ -47,6 +49,7 @@ class JobCard extends React.Component{
     this.setState({dateStart: this.state.initialData.dateStart})
     this.setState({dateEnd: this.state.initialData.dateEnd})
     this.setState({quillData: this.state.initialData.quillData})
+    this.setState({presentJob: this.state.initialData.presentJob})
   }
   updateData(){
     let data = this.state.initialJobsData
@@ -57,6 +60,7 @@ class JobCard extends React.Component{
       dateStart: this.state.dateStart,
       dateEnd: this.state.dateEnd,
       quillData: this.state.quillData,
+      presentJob: this.state.presentJob
     }
     data[this.props.objectKey] = newData
     localStorage.setItem('cv-experience',JSON.stringify(data))
@@ -86,8 +90,19 @@ class JobCard extends React.Component{
               <input name="dateStart" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateStart} onChange={this.handleChange}></input>
             </div>
             <span className={this.state.editable ? "hidden":''}>-</span>
-            <span className={`${this.state.editable ? "hidden":""}`}>{this.state.dateEnd}</span>
-            <div className={`${this.state.editable ? "":"hidden"} grid`}>
+            <span className={`${this.state.editable ? 'hidden':''} ${this.state.presentJob ? '':'hidden'}`}>Present</span>
+            <span className={`${this.state.editable ? "hidden":""} ${this.state.presentJob ? 'hidden':""}`}>{this.state.dateEnd}</span>
+            <div className={`${this.state.editable ? '':'hidden'} flex items-center gap-4`}>
+              <input type={'checkbox'} className={`h-6 w-6`} defaultChecked={this.state.presentJob} onClick={()=>{
+                if(this.state.presentJob){
+                  this.setState({presentJob: false})
+                } else {
+                  this.setState({presentJob: true})
+                }
+              }}></input>
+              <span>I currently work here</span>
+            </div>
+            <div className={`${this.state.editable ? "":"hidden"} ${this.state.presentJob ? 'hidden':''} grid`}>
               <label className="font-bold mb-1" htmlFor="dateEnd">End date</label>
               <input name="dateEnd" className="border-2 border-gray-300 p-2 px-4 rounded-md  focus-visible:outline-blue-400" value={this.state.dateEnd} onChange={this.handleChange}></input>
             </div>
@@ -109,7 +124,7 @@ class JobCard extends React.Component{
           </div>
           <div className={`${this.state.editable ? "":"hidden"}`}>
             <label className="font-bold mb-1" htmlFor="description">Description</label>
-            <ReactQuill className="focus-visible:outline-blue-400" theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
+            <ReactQuill className="text-lg focus-visible:outline-blue-400" theme="snow" value={this.state.quillData} modules={quillOptions} onChange={(value)=>{
               this.setState({quillData: value})
             }} />
           </div>
