@@ -14,9 +14,9 @@ class App extends React.Component {
             <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center"></div>
             <Experience />
             <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center"></div>
-            <Education />
-            <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center"></div>
             <Skills />
+            <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center"></div>
+            <Education />
           </div>
         </div>
       </>
