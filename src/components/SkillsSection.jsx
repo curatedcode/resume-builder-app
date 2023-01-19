@@ -35,15 +35,17 @@ class SkillsSection extends React.Component{
           }
           </div>
           <button onClick={()=>{
-            const data = this.state.initialData
+            const fetchData = JSON.parse(localStorage.getItem('cv-skills'))
+            this.setState({initialData: fetchData})
+            const data = fetchData
             const defaultData = {
-              skill: 'Position',
+              skill: 'Skill',
               years: 'Years of Experience'
             }
             data.push(defaultData)
             localStorage.setItem('cv-skills',JSON.stringify(data))
             this.setState({initialData: data})
-          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors my-2 print:hidden">+ Add Skills</button>
+          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors my-3 print:hidden">+ Add Skills</button>
         </section>
       </>
     )

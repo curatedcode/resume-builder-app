@@ -43,19 +43,22 @@ class ExpSection extends React.Component{
           }
           </div>
           <button onClick={()=>{
-            const data = this.state.initialData
-            const defaultData = {
-              title: 'Position',
-              company: 'Company Name',
-              location: 'Location',
-              dateStart: '01/2023',
-              dateEnd: '01/2023',
-              quillData: 'Description'
+            const fetchData = JSON.parse(localStorage.getItem('cv-experience'))
+            this.setState({initialData: fetchData})
+            const data = fetchData
+            const defaultData ={
+              title: "Title",
+              company: "Company",
+              location: "Location",
+              dateStart: "01/2000",
+              dateEnd: "01/2000",
+              quillData: '<p>Summary<p>',
+              presentJob: false
             }
             data.push(defaultData)
             localStorage.setItem('cv-experience',JSON.stringify(data))
             this.setState({initialData: data})
-          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors my-2 print:hidden">+ Add Work Experience</button>
+          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors my-3 print:hidden">+ Add Work Experience</button>
         </section>
       </>
     )

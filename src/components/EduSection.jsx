@@ -43,19 +43,22 @@ class EduSection extends React.Component{
           }
           </div>
           <button onClick={()=>{
-            const data = this.state.initialData
+            const fetchData = JSON.parse(localStorage.getItem('cv-education'))
+            this.setState({initialData: fetchData})
+            const data = fetchData
             const defaultData = {
-              school: 'School',
-              degree: 'Degree',
-              study: 'Field Of Study',
-              location: 'Location',
-              dateStart: '01/2023',
-              dateEnd: '01/2023'
+              school: "School",
+              degree: "Degree",
+              study: "Study",
+              location: "Location",
+              dateStart: "01/2000",
+              dateEnd: "01/2000",
+              presentSchool: false
             }
             data.push(defaultData)
             localStorage.setItem('cv-education',JSON.stringify(data))
             this.setState({initialData: data})
-          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors print:hidden my-2">+ Add Education</button>
+          }} className="text-blue-400 hover:text-blue-600 place-self-start transition-colors print:hidden my-3">+ Add Education</button>
         </section>
       </>
     )
