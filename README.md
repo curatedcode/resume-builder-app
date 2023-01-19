@@ -41,9 +41,9 @@ npm run serve
 
 ## Screenshots
 
-![Initial Layout Editor](https://postimg.cc/QVRjHfzf)
-![Editing a Section](https://postimg.cc/hQ7g2mX8)
-![Print Screen](https://postimg.cc/mhcbLvmc)
+![Initial Layout Editor](https://i.postimg.cc/PrqJVcQn/Screenshot-from-2023-01-19-14-21-15.png)
+![Editing a Section](https://i.postimg.cc/C5c1LHY2/Screenshot-from-2023-01-19-14-22-39.png)
+![Print Screen](https://i.postimg.cc/sfm1cySJ/Screenshot-from-2023-01-19-14-21-51.png)
 
 
 
