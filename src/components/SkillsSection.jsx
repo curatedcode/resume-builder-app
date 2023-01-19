@@ -24,7 +24,7 @@ class SkillsSection extends React.Component{
       <>
         <section className="grid">
           <h2 className="place-self-center text-lg text-blue-400">Skills</h2>
-          <div className="border-b-2 rounded-full border-b-blue-400 opacity-40 w-full place-self-center"></div>
+          <div className="border-b-2 mb-2 rounded-full border-b-blue-400 opacity-40 w-full place-self-center"></div>
           <div className="grid my-2">
           {
             this.state.initialData.map((skill) => {return<div className="grid">

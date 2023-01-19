@@ -60,7 +60,7 @@ class Header extends React.Component{
         <FaEdit className={`${this.state.editable ? "hidden":""} place-self-end print:hidden text-lg`} onClick={()=>{
           this.setState({editable: true})
         }}>Edit</FaEdit>
-        <section className={`grid mb-2 ${this.state.editable ? "gap-4":""}`}>
+        <section className={`grid ${this.state.editable ? "gap-4":""}`}>
           <h1 className={`font-extrabold mb-2 text-3xl text-blue-400 place-self-center ${this.state.editable ? "hidden":""}`}>{this.state.name}</h1>
           <div className={`${this.state.editable ? "":"hidden"} grid`}>
             <label className="font-bold mb-1" htmlFor='name'>Name</label>

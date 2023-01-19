@@ -32,7 +32,7 @@ class EduSection extends React.Component{
       <>
         <section className="grid">
           <h2 className="place-self-center text-lg text-blue-400">Education</h2>
-          <div className="border-b-2 rounded-full border-blue-400 opacity-40 w-full place-self-center"></div>
+          <div className="border-b-2 mb-2 rounded-full border-blue-400 opacity-40 w-full place-self-center"></div>
           <div className="grid gap-2 my-2">
           {
             this.state.initialData.map(degree => {return<div className="grid">
